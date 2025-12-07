@@ -1,7 +1,7 @@
 package dev.sekousow;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -19,7 +19,7 @@ public class AccountRepository {
             "XOF",
             520_000.0,
             0.0,
-            LocalDateTime.now()
+            new Date()
     );
 
     Account account2 = new Account(
@@ -29,7 +29,7 @@ public class AccountRepository {
             "XOF",
             95_000.0,
             75_000.0,
-            LocalDateTime.now()
+            new Date()
     );
 
     Account account3 = new Account(
@@ -39,7 +39,7 @@ public class AccountRepository {
             "XOF",
             1_800_000.0,
             0.0,
-            LocalDateTime.now()
+            new Date()
     );
 
     Account account4 = new Account(
@@ -49,7 +49,7 @@ public class AccountRepository {
             "XOF",
             32_000.0,
             50_000.0,
-            LocalDateTime.now()
+            new Date()
     );
 
     Account account5 = new Account(
@@ -59,15 +59,15 @@ public class AccountRepository {
             "XOF",
             640_000.0,
             0.0,
-            LocalDateTime.now()
+            new Date()
     );
 
     public AccountRepository() {
-        accounts.put(account1.code(), account1);
-        accounts.put(account2.code(), account2);
-        accounts.put(account3.code(), account3);
-        accounts.put(account4.code(), account4);
-        accounts.put(account5.code(), account5);
+        accounts.put(account1.getCode(), account1);
+        accounts.put(account2.getCode(), account2);
+        accounts.put(account3.getCode(), account3);
+        accounts.put(account4.getCode(), account4);
+        accounts.put(account5.getCode(), account5);
     }
 
     public Account findByCode(String code) {
@@ -77,7 +77,7 @@ public class AccountRepository {
     public Account findByAccountNumber(String accountNumber) {
         return accounts.values()
                 .stream()
-                .filter(account -> account.accountNumber().equals(accountNumber))
+                .filter(account -> account.getAccountNumber().equals(accountNumber))
                 .findFirst()
                 .orElse(null);
     }
@@ -87,7 +87,7 @@ public class AccountRepository {
     }
 
     public Account createAccount(Account account) {
-        accounts.putIfAbsent(account.code(), account);
+        accounts.putIfAbsent(account.getCode(), account);
         return account;
     }
 }

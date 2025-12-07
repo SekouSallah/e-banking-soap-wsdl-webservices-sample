@@ -30,6 +30,8 @@ public class AccountService {
 
     @WebMethod(operationName = "GetAllAccounts")
     public List<Account> findAll() {
-        return accountRepository.findAll();
+        var accounts = accountRepository.findAll();
+        accounts.forEach(System.out::println);
+        return accounts;
     }
 }
