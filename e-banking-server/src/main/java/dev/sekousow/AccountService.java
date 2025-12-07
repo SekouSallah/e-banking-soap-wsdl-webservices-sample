@@ -24,7 +24,7 @@ public class AccountService {
     }
 
     @WebMethod(operationName = "CreateAccount")
-    public Account createAccount(@WebParam(name = "account") Account account) {
+    public Account createAccount(@WebParam(name = "account", partName = "accountRequest", targetNamespace = "http://sekousow.dev/ebanking") Account account) {
         return accountRepository.createAccount(account);
     }
 
