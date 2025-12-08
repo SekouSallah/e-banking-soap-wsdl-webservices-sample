@@ -1,4 +1,4 @@
-package dev.sekousow;
+package dev.sekousow.ebankingserver.accounts;
 
 import jakarta.jws.WebMethod;
 import jakarta.jws.WebParam;

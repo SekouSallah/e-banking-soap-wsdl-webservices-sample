@@ -1,4 +1,4 @@
-package dev.sekousow;
+package dev.sekousow.ebankingserver.accounts;
 
 import java.util.Date;
 

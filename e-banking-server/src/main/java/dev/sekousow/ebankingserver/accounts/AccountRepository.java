@@ -1,4 +1,4 @@
-package dev.sekousow;
+package dev.sekousow.ebankingserver.accounts;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -63,11 +63,10 @@ public class AccountRepository {
     );
 
     public AccountRepository() {
-        accounts.put(account1.getCode(), account1);
-        accounts.put(account2.getCode(), account2);
-        accounts.put(account3.getCode(), account3);
-        accounts.put(account4.getCode(), account4);
-        accounts.put(account5.getCode(), account5);
+        List.of(account1, account2, account3, account4, account5)
+                .forEach(account ->
+                        accounts.put(account.getCode(), account)
+                );
     }
 
     public Account findByCode(String code) {

@@ -8,6 +8,7 @@
         <artifactId>e-banking-soap-wsdl-webservices-sample</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+    <packaging>jar</packaging>
 
     <artifactId>e-banking-server</artifactId>
 
