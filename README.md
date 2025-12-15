@@ -1,10 +1,8 @@
-
-```md
 # E-Banking SOAP Web Service – Demo Project
 
-Ce projet est une démonstration d’un Web Service SOAP en Java simulant un système bancaire simple.  
-Il illustre l’implémentation et la consommation de services SOAP (JAX-WS) dans une architecture multi-modules Maven,
-sans utilisation de frameworks tels que Spring Boot.
+Ce projet est une démonstration d’un **Web Service SOAP en Java** simulant un système bancaire simple.
+Il illustre **l’implémentation (producteur)** et **la consommation (client)** de services SOAP (**JAX-WS**) dans une *
+*architecture multi-modules Maven**, sans framework applicatif tel que Spring Boot.
 
 ---
 
@@ -12,34 +10,55 @@ sans utilisation de frameworks tels que Spring Boot.
 
 Le système bancaire simulé expose les opérations suivantes :
 
-- Création de comptes bancaires
-- Consultation de la liste des comptes
-- Conversion Euro vers Dirham
-- Exposition d’un Web Service SOAP via un serveur applicatif
+* Création de comptes bancaires
+* Consultation de la liste des comptes
+* Conversion Euro vers Dirham
+* Exposition d’un Web Service SOAP via un serveur applicatif
 
 ---
 
 ## Architecture du projet
 
-```
+Le projet est structuré sous forme d’un **repository Maven multi-modules**, séparant clairement les responsabilités
+entre le **serveur SOAP** et le **client SOAP**.
 
+```
 e-banking-soap-wsdl-webservices-sample
 │
-├── e-banking-server → Producteur du Web Service SOAP
-└── e-banking-client → Consommateur du Web Service SOAP
+├── e-banking-server
+│   ├── src/main/java
+│   ├── src/main/resources
+│   ├── src/main/webapp
+│   └── pom.xml
+│
+└── e-banking-client
+    ├── src/main/java
+    ├── src/main/resources
+    └── pom.xml
+```
 
-````
+### Rôle des modules
+
+#### `e-banking-server` — Producteur SOAP
+
+* Implémente les **services SOAP** avec **JAX-WS**
+* Expose automatiquement le **WSDL** et les **XSD**
+
+#### `e-banking-client` — Consommateur SOAP
+
+* Consomme le Web Service SOAP exposé par le serveur
+* Génère les **stubs clients** à partir du WSDL (`wsimport` ou plugin Maven)
+* Appelle les opérations SOAP comme de simples méthodes Java
 
 ---
 
 ## Technologies utilisées
 
-- Java 21
-- Maven
-- JAX-WS (SOAP)
-- WSDL / XSD
-- WSImport / Plugin Maven JAX-WS
-- Serveur applicatif (ex : Tomcat, Jetty, GlassFish)
+* Java 21
+* Maven
+* JAX-WS (SOAP)
+* WSDL / XSD
+* WSImport / Plugin Maven JAX-WS
 
 ---
 
@@ -47,19 +66,16 @@ e-banking-soap-wsdl-webservices-sample
 
 ### Prérequis
 
-- Java 21
-- Maven 3.x
-- Serveur applicatif compatible JAX-WS
+* Java 21
+* Maven 3.x
+* Serveur applicatif compatible JAX-WS
 
 ### Lancer le serveur SOAP
 
 ```bash
 cd e-banking-server
 mvn clean package
-````
-
-Déployer ensuite l’artefact généré (`.war`) sur le serveur applicatif.
-
+```
 ---
 
 ## Accès au Web Service
@@ -102,23 +118,17 @@ SOAP UI génère automatiquement les requêtes correspondant aux opérations exp
 
 ### Conversion Euro vers Dirham
 
-Cette requête permet de convertir un montant en Euro vers le Dirham depuis SOAP UI.
-
 ![Conversion Euro vers Dirham](images/1.png)
 
 ---
 
 ### Récupération des comptes
 
-Cette requête permet de récupérer la liste des comptes bancaires existants.
-
 ![Récupération des comptes](images/2.png)
 
 ---
 
 ### Création d’un compte bancaire
-
-Cette requête permet de créer un nouveau compte bancaire via SOAP UI.
 
 ![Création de compte](images/3.png)
 
@@ -152,9 +162,8 @@ images/
 
 ## Notes
 
-Ce projet est destiné à un usage éducatif et démonstratif.
+Ce projet est destiné à un usage **éducatif et démonstratif**.
 Il ne couvre pas les aspects avancés tels que la sécurité SOAP (WS-Security), la gestion des transactions ou la montée
 en charge.
 
 ---
-
