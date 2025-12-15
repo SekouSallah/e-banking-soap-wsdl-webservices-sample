@@ -1,11 +1,3 @@
-Parfait, dans ce cas il faut **intégrer les images directement dans le README via Markdown** pour qu’elles **s’affichent
-** (et pas seulement être listées).
-
-Voici la **version corrigée** avec les captures **visibles**, en supposant que les images sont dans un dossier `images/`
-à la racine du projet
-(adapte le chemin si nécessaire).
-
----
 
 ```md
 # E-Banking SOAP Web Service – Demo Project
